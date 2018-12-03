@@ -65,5 +65,7 @@ namespace WF_GestionStock.Services
             Context.Produit.Remove(Produit);
             Context.SaveChanges();
         }
+
+        
     }
 }
