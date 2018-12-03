@@ -15,18 +15,18 @@ namespace WF_GestionStock
     public partial class Form1 : Form
     {
         StockEntities context = new StockEntities();
-        CategorieService categorieService;
-        ProduitService produitService;
-        MouvementService mouvementService;
+        private CategorieService categorieService;
+        private ProduitService produitService;
+        private MouvementService mouvementService;
 
         List<Categorie> Categories = new List<Categorie>();
 
         public Form1()
         {
             InitializeComponent();
-            CategorieService categorieService = new CategorieService(context);
-            ProduitService produitService = new ProduitService(context);
-            MouvementService mouvementService = new MouvementService(context);
+            categorieService = new CategorieService(context);
+            produitService = new ProduitService(context);
+            mouvementService = new MouvementService(context);
             Categories = categorieService.GetCategories();
 
         }
@@ -48,7 +48,6 @@ namespace WF_GestionStock
                 Nom = AjoutProduitNom.Text,
                 PrixHt = double.Parse(AjoutProduitPrixHT.Text)
             };
-            produitService.AddProduit(produit);
 
             mouvementService.AddMouvement(new Mouvement()
             {
