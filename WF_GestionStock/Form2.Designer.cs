@@ -30,12 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.NameBox = new System.Windows.Forms.TextBox();
-            this.CatBox = new System.Windows.Forms.TextBox();
             this.QtyBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.CloseFormBtn = new System.Windows.Forms.Button();
+            this.CatComboBox = new System.Windows.Forms.ComboBox();
+            this.UpdateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -52,17 +53,8 @@
             // 
             this.NameBox.Location = new System.Drawing.Point(51, 97);
             this.NameBox.Name = "NameBox";
-            this.NameBox.ReadOnly = true;
             this.NameBox.Size = new System.Drawing.Size(151, 20);
             this.NameBox.TabIndex = 1;
-            // 
-            // CatBox
-            // 
-            this.CatBox.Location = new System.Drawing.Point(51, 147);
-            this.CatBox.Name = "CatBox";
-            this.CatBox.ReadOnly = true;
-            this.CatBox.Size = new System.Drawing.Size(100, 20);
-            this.CatBox.TabIndex = 2;
             // 
             // QtyBox
             // 
@@ -104,7 +96,7 @@
             // 
             // CloseFormBtn
             // 
-            this.CloseFormBtn.Location = new System.Drawing.Point(51, 249);
+            this.CloseFormBtn.Location = new System.Drawing.Point(132, 249);
             this.CloseFormBtn.Name = "CloseFormBtn";
             this.CloseFormBtn.Size = new System.Drawing.Size(75, 23);
             this.CloseFormBtn.TabIndex = 7;
@@ -112,17 +104,36 @@
             this.CloseFormBtn.UseVisualStyleBackColor = true;
             this.CloseFormBtn.Click += new System.EventHandler(this.CloseFormBtn_Click);
             // 
+            // CatComboBox
+            // 
+            this.CatComboBox.FormattingEnabled = true;
+            this.CatComboBox.Location = new System.Drawing.Point(51, 147);
+            this.CatComboBox.Name = "CatComboBox";
+            this.CatComboBox.Size = new System.Drawing.Size(121, 21);
+            this.CatComboBox.TabIndex = 8;
+            // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Location = new System.Drawing.Point(51, 249);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.UpdateButton.TabIndex = 9;
+            this.UpdateButton.Text = "Mettre à jour";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(246, 325);
+            this.Controls.Add(this.UpdateButton);
+            this.Controls.Add(this.CatComboBox);
             this.Controls.Add(this.CloseFormBtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.QtyBox);
-            this.Controls.Add(this.CatBox);
             this.Controls.Add(this.NameBox);
             this.Controls.Add(this.label1);
             this.Name = "Form2";
@@ -137,11 +148,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox NameBox;
-        private System.Windows.Forms.TextBox CatBox;
         private System.Windows.Forms.TextBox QtyBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button CloseFormBtn;
+        private System.Windows.Forms.ComboBox CatComboBox;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }

@@ -16,27 +16,36 @@ namespace WF_GestionStock
     {
         StockEntities context = new StockEntities();
         private ProduitService produitService;
+        private CategorieService categorieService;
         private MouvementService mouvementService;
         private Produit Produit;
         private int Qty;
         List<Mouvement> Mouvements = new List<Mouvement>();
+        List<Categorie> Categories = new List<Categorie>();
 
 
-        public Form2(int Id)
+        public Form2(int ProduitId)
         {
             InitializeComponent();
             produitService = new ProduitService(context);
             mouvementService = new MouvementService(context);
-            Produit = produitService.GetProduit(Id);
+            categorieService = new CategorieService(context);
+            Produit = produitService.GetProduit(ProduitId);
             Mouvements = mouvementService.GetMouvements();
-            Qty = GetQuantity(Id);
+            Categories = categorieService.GetCategories();
+            Qty = GetQuantity(ProduitId);
 
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
             NameBox.Text = Produit.Nom;
-            CatBox.Text = Produit.Categorie.Nom;
+            foreach (var c in Categories)
+            {
+                CatComboBox.Items.Add(String.Format("{0}/ {1}", c.Id, c.Nom));
+            }
+            CatComboBox.SelectedIndex = Produit.Categorie.Id - 1;
+            CatComboBox.SelectedItem = 1;
             QtyBox.Text = Qty.ToString();
         }
 
@@ -64,7 +73,16 @@ namespace WF_GestionStock
 
         private void CloseFormBtn_Click(object sender, EventArgs e)
         {
+            Form1 Form1 = new Form1();
+            Form1.Show();
             this.Close();
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            Produit.Nom = NameBox.Text;
+            Produit.Categorie = Categories.Where(c => c.Id == int.Parse(CatComboBox.Text.Substring(0, 1))).First();
+            produitService.UpdateProduit(Produit);
         }
     }
 }

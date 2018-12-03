@@ -17,7 +17,7 @@ namespace WF_GestionStock
 
         List<Categorie> Categories = new List<Categorie>();
         List<Mouvement> Mouvements = new List<Mouvement>();
-
+        List<Produit> Produits = new List<Produit>();
         public Form1()
         {
             InitializeComponent();
@@ -77,12 +77,12 @@ namespace WF_GestionStock
             {
                 ListViewItem Item = ListMvt.SelectedItems[0];
                 int IdProduct = int.Parse(Item.SubItems[0].Text);
-
                 Item.Selected = false;
                 Form2 DetailsPdtForm = new Form2(IdProduct);
                 DetailsPdtForm.Show();
+                this.Hide();
             }
-
         }
+
     }
 }
